@@ -766,20 +766,6 @@ header img.visible {
   <script>
     AOS.init({ duration: 1000, once: true });
 
-    function handleSubmit(event) {
-  event.preventDefault();
-  const form = event.target;
-  const nome = form.nome.value;
-  const cognome = form.cognome.value;
-  const email = form.email.value;
-  const telefono = form.telefono.value;
-
-  alert(
-    `✅ Prenotazione inviata con successo!\n\nLa conferma della prenotazione ti verrà inviata alla mail: ${email}\nTi aspettiamo in palestra 💪`
-  );
-
-  form.reset();
-}
 
 // Bottone "Torna su"
 const scrollTopBtn = document.createElement("button");
@@ -844,31 +830,6 @@ window.addEventListener("scroll", () => {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
-
-
- function submitForm(event, tipo) {
-  event.preventDefault();
-  const form = event.target;
-  const data = {
-    nome: form.nome.value,
-    cognome: form.cognome.value,
-    email: form.email.value,
-    tipo: tipo,
-    giorno: form.data ? form.data.value : form.lezione?.value.split(" ")[0],
-    orario: form.orario ? form.orario.value : form.lezione?.value.split(" ")[1]
-  };
-
-  emailjs.send("service_ujl265n", "template_4ay1tv7", data)
-    .then(() => {
-      showToast(`✅ Prenotazione per ${data.tipo} confermata per ${data.nome} ${data.cognome}. Controlla la mail: ${data.email}`);
-      form.reset();
-    }, (err) => {
-      showToast("⚠️ Errore durante l'invio. Riprova.");
-      console.error("Errore EmailJS:", err);
-    });
-}
-
-
 
   const giorniFestivi = [
     "2025-01-01", "2025-04-20", "2025-04-25", "2025-05-01",
@@ -1089,6 +1050,5 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 </script>
-
 </body>
 </html>
