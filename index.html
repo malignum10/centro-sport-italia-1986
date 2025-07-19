@@ -711,11 +711,13 @@ header img.visible {
     <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x133b060d26e46c95:0x1efa98c7a412eaa3" target="_blank">
       <div class="map-container">
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.911682790506!2d9.190498!3d45.464203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1efa98c7a412eaa3!2zNDXCsDI3JzUwLjEiTiA5wrAxMScyNS4xIkU!5e0!3m2!1sit!2sit!4v1689012345678"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.911682790506!2d9.190498!3d45.464203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1efa98c7a412eaa3!2zNDXCsDI3JzUwLjEiTiA5wrAxMScyNS4xIkU!5e0!3m2!1sit!2sit!4v1689012345678"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+
       </div>
     </a>
   </section>
@@ -844,16 +846,28 @@ window.addEventListener("scroll", () => {
 }
 
 
-  function submitForm(event, tipo) {
+ function submitForm(event, tipo) {
   event.preventDefault();
   const form = event.target;
-  const nome = form.nome.value;
-  const cognome = form.cognome.value;
-  const email = form.email.value;
+  const data = {
+    nome: form.nome.value,
+    cognome: form.cognome.value,
+    email: form.email.value,
+    tipo: tipo,
+    giorno: form.data ? form.data.value : form.lezione?.value.split(" ")[0],
+    orario: form.orario ? form.orario.value : form.lezione?.value.split(" ")[1]
+  };
 
-  showToast(`✅ Prenotazione per ${tipo} confermata per ${nome} ${cognome}. Controlla la mail: ${email}`);
-  form.reset();
+  emailjs.send("service_ujl265n", "template_4ay1tv7", data)
+    .then(() => {
+      showToast(`✅ Prenotazione per ${data.tipo} confermata per ${data.nome} ${data.cognome}. Controlla la mail: ${data.email}`);
+      form.reset();
+    }, (err) => {
+      showToast("⚠️ Errore durante l'invio. Riprova.");
+      console.error("Errore EmailJS:", err);
+    });
 }
+
 
 
   const giorniFestivi = [
@@ -1043,5 +1057,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+<!-- EmailJS - Libreria -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("q3rVx1jespmWFEnWk"); // USER ID (chiave pubblica)
+  })();
+</script>
+
+<!-- Funzione per invio email -->
+<script>
+  function submitForm(event, tipo) {
+    event.preventDefault();
+    const form = event.target;
+    const data = {
+      nome: form.nome.value,
+      cognome: form.cognome.value,
+      email: form.email.value,
+      tipo: tipo,
+      giorno: form.data ? form.data.value : form.lezione?.value.split(" ")[0],
+      orario: form.orario ? form.orario.value : form.lezione?.value.split(" ")[1]
+    };
+
+    emailjs.send("service_ujl265n", "template_4ay1tv7", data)
+      .then(() => {
+        showToast(`✅ Prenotazione per ${data.tipo} confermata per ${data.nome} ${data.cognome}. Controlla la mail: ${data.email}`);
+        form.reset();
+      }, (err) => {
+        showToast("⚠️ Errore durante l'invio. Riprova.");
+        console.error("Errore EmailJS:", err);
+      });
+  }
+</script>
+
 </body>
 </html>
