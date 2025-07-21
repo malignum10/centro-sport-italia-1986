@@ -1046,35 +1046,5 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   };
 </script>
-<script>
-  (function() {
-    emailjs.init("q3rVx1jespmWFEnWk"); 
-  })();
-</script>
-
-<!-- Funzione per invio email -->
-<script>
-  function submitForm(event, tipo) {
-    event.preventDefault();
-    const form = event.target;
-    const data = {
-      nome: form.nome.value,
-      cognome: form.cognome.value,
-      email: form.email.value,
-      tipo: tipo,
-      giorno: form.data ? form.data.value : form.lezione?.value.split(" ")[0],
-      orario: form.orario ? form.orario.value : form.lezione?.value.split(" ")[1]
-    };
-
-    emailjs.send("service_14gxl7m", "template_4ay1tv7", data)
-      .then(() => {
-        showToast(`✅ Prenotazione per ${data.tipo} confermata per ${data.nome} ${data.cognome}. Controlla la mail: ${data.email}`);
-        form.reset();
-      }, (err) => {
-  showToast("⚠️ Invio fallito: " + err.text);
-  console.error("Errore EmailJS:", err);
-});
-  }
-</script>
 </body>
 </html>
