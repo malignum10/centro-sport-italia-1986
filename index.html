@@ -1045,9 +1045,9 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast(`✅ Prenotazione per ${data.tipo} confermata per ${data.nome} ${data.cognome}. Controlla la mail: ${data.email}`);
         form.reset();
       }, (err) => {
-        showToast("⚠️ Errore durante l'invio. Riprova.");
-        console.error("Errore EmailJS:", err);
-      });
+  showToast("⚠️ Invio fallito: " + err.text);
+  console.error("Errore EmailJS:", err);
+});
   }
 </script>
 </body>
