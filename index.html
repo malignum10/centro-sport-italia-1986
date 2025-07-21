@@ -1022,7 +1022,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
   (function() {
-    emailjs.init("q3rVx1jespmWFEnWk"); // USER ID (chiave pubblica)
+    emailjs.init("q3rVx1jespmWFEnWk"); 
   })();
 </script>
 
@@ -1040,7 +1040,7 @@ document.addEventListener('DOMContentLoaded', () => {
       orario: form.orario ? form.orario.value : form.lezione?.value.split(" ")[1]
     };
 
-    emailjs.send("service_ujl265n", "template_4ay1tv7", data)
+    emailjs.send("service_14gxl7m", "template_4ay1tv7", data)
       .then(() => {
         showToast(`✅ Prenotazione per ${data.tipo} confermata per ${data.nome} ${data.cognome}. Controlla la mail: ${data.email}`);
         form.reset();
