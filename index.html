@@ -1337,10 +1337,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <!-- EmailJS - Libreria -->
-<script type="module">
-  import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
-
-  emailjs.init("q3rVx1jespmWFEnWk");
+<!-- Carica EmailJS NON modulare -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("q3rVx1jespmWFEnWk");
+  })();
 
   window.submitForm = function(event, tipo) {
     event.preventDefault();
@@ -1351,7 +1353,7 @@ document.addEventListener('DOMContentLoaded', () => {
       email: form.email.value,
       tipo: tipo,
       giorno: form.data ? form.data.value : form.lezione?.value?.split(" ")[0] || "Venerdì",
-orario: form.orario ? form.orario.value : form.lezione?.value?.split(" ")[1] || "19:30"
+      orario: form.orario ? form.orario.value : form.lezione?.value?.split(" ")[1] || "19:30"
     };
 
     emailjs.send("service_14gxl7m", "template_4ay1tv7", data)
@@ -1364,6 +1366,7 @@ orario: form.orario ? form.orario.value : form.lezione?.value?.split(" ")[1] || 
       });
   };
 </script>
+
 <script>
   let infoCorsiIndex = 0;
 
