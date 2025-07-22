@@ -333,9 +333,11 @@ header img.visible {
 .video-carousel {
   position: relative;
   overflow: hidden;
-  max-width: 100%;
-  margin-top: 20px;
+  max-width: 360px;
+  margin: 20px auto;
 }
+
+
 
 .video-track {
   display: flex;
@@ -541,6 +543,53 @@ header img.visible {
   pointer-events: none;
   transition: opacity 0.8s ease;
 }
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.accordion-btn {
+  background-color: #ffd700;
+  color: #000;
+  font-weight: bold;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 16px;
+}
+
+.accordion-btn:hover {
+  background-color: #e0be00;
+}
+
+.accordion-content {
+  background-color: rgba(255,255,255,0.1);
+  padding: 0 18px;
+  border-radius: 10px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: scaleY(0.95);
+  transition: all 0.5s ease;
+}
+.accordion-content.active {
+  max-height: 1000px;
+  opacity: 1;
+  padding: 18px;
+  transform: scaleY(1);
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
   </style>
 </head>
@@ -549,7 +598,8 @@ header img.visible {
   <img src="logo-trasparente.png" alt="Logo Centro Sport Italia" id="preloader-logo">
 </div>
 <header data-aos="fade-down">
-  <img src="logo-trasparente.png" alt="Logo Centro Sport Italia" id="header-logo" class="logo-header-target">
+  <img src="logo-trasparente.png" alt="Logo Centro Sport Italia" id="header-logo" class="logo-header-target" onclick="location.reload()">
+
 
     <h1>Centro Sport Italia dal 1986</h1>
   </header>
@@ -559,6 +609,7 @@ header img.visible {
   <a href="#orari">Orari</a>
   <a href="#video">I nostri video</a>
   <a href="#corsi">I nostri corsi</a>
+  <a href="#info-corsi">Info corsi</a>
   <a href="#avvisi">Avvisi</a> 
   <a href="#prenota">Prenota</a>
   <a href="#dove">Dove trovarci</a>
@@ -601,6 +652,273 @@ header img.visible {
     src="Planning corsi attivo dal 7 aprile all’11 luglio.TRX dal mese di luglio verrà sospeso e ripartir.jpg"
     alt="Planning Corsi"
   />
+</section>
+<section id="info-corsi" class="box" data-aos="fade-up">
+  <h2 style="color: #ffd700; text-align: center;">Info sui corsi</h2>
+
+  <div class="accordion">
+  <button class="accordion-btn" onclick="toggleAccordion('cardio')">Cardio Tonic</button>
+  <div class="accordion-content" id="cardio">
+    <p><strong>Cos'è il Cardio Tonic?</strong><br>
+    È un corso fitness di gruppo che unisce:</p>
+    <ul>
+      <li>Esercizi cardiovascolari (per aumentare il fiato e bruciare calorie)</li>
+      <li>Esercizi di tonificazione (per rinforzare i muscoli)</li>
+    </ul>
+    <p><strong>🔹 A cosa serve?</strong></p>
+    <ul>
+      <li>Migliora il cuore e la respirazione</li>
+      <li>Fa dimagrire</li>
+      <li>Rende i muscoli più forti e tonici</li>
+      <li>Aiuta a combattere la sedentarietà</li>
+    </ul>
+    <p><strong>🔹 Cosa si fa durante il corso?</strong></p>
+    <ul>
+      <li>Si segue un istruttore</li>
+      <li>Si fanno movimenti semplici a ritmo di musica</li>
+      <li>Si alternano esercizi:
+        <ul>
+          <li>Cardio: salti leggeri, corsetta sul posto, step, ecc.</li>
+          <li>Tonici: squat, addominali, pesetti, esercizi a corpo libero</li>
+        </ul>
+      </li>
+    </ul>
+    <p><strong>Durata:</strong> circa 45-60 minuti</p>
+    <p><strong>🔹 Serve essere allenati?</strong><br>
+    No. È adatto a tutti: puoi fare gli esercizi al tuo ritmo. L'importante è muoversi e divertirsi.</p>
+  </div>
+
+    <button class="accordion-btn" onclick="toggleAccordion('total')">Total Body</button>
+<div class="accordion-content" id="total">
+  <p><strong>🔹 Cos'è il Total Body?</strong><br>
+  È un corso fitness di gruppo che allena tutto il corpo (da qui il nome "Total Body").<br>
+  Si lavora su:</p>
+  <ul>
+    <li>Gambe</li>
+    <li>Glutei</li>
+    <li>Addome</li>
+    <li>Braccia</li>
+    <li>Schiena</li>
+  </ul>
+  <p><strong>🔹 A cosa serve?</strong></p>
+  <ul>
+    <li>Rinforza tutti i muscoli</li>
+    <li>Migliora la forma fisica generale</li>
+    <li>Aiuta a dimagrire e tonificare</li>
+    <li>Migliora postura, equilibrio e resistenza</li>
+  </ul>
+  <p><strong>🔹 Cosa si fa durante il corso?</strong></p>
+  <ul>
+    <li>Si segue un istruttore</li>
+    <li>Si usano a volte piccoli attrezzi: pesetti, elastici, step, tappetino</li>
+    <li>Si fanno esercizi a corpo libero e semplici come:
+      <ul>
+        <li>Squat</li>
+        <li>Affondi</li>
+        <li>Addominali</li>
+        <li>Piegamenti</li>
+        <li>Esercizi per braccia e glutei</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Ogni lezione allena più gruppi muscolari insieme, con o senza musica.<br>
+  <strong>Durata:</strong> circa 45-60 minuti</p>
+  <p><strong>🔹 Serve essere allenati?</strong><br>
+  No. È adatto anche ai principianti. Gli esercizi si possono fare con calma e adattare al proprio livello.</p>
+</div>
+<button class="accordion-btn" onclick="toggleAccordion('gag')">G.A.G.</button>
+<div class="accordion-content" id="gag">
+  <p><strong>🔹 Cos'è il G.A.G.?</strong><br>
+  È un corso fitness che si concentra su tre zone specifiche del corpo:</p>
+  <ul>
+    <li>Gambe</li>
+    <li>Addome</li>
+    <li>Glutei</li>
+  </ul>
+  <p>L'obiettivo è tonificare e rassodare queste parti, spesso considerate “critiche”, soprattutto da chi vuole migliorare la linea.</p>
+
+  <p><strong>🔹 A cosa serve?</strong></p>
+  <ul>
+    <li>Rende gambe e glutei più sodi</li>
+    <li>Rafforza l’addome</li>
+    <li>Aiuta a dimagrire e modellare il corpo</li>
+    <li>Migliora la postura e la stabilità</li>
+  </ul>
+
+  <p><strong>🔹 Cosa si fa durante il corso?</strong></p>
+  <ul>
+    <li>Si seguono esercizi a corpo libero o con attrezzi leggeri (pesetti, elastici, tappetino)</li>
+    <li>Si fanno movimenti semplici ma intensi, come:
+      <ul>
+        <li>Squat</li>
+        <li>Affondi</li>
+        <li>Crunch (addominali)</li>
+        <li>Ponte per i glutei</li>
+        <li>Esercizi in piedi o a terra</li>
+      </ul>
+    </li>
+    <li>Musica energica per mantenere il ritmo</li>
+  </ul>
+  <p><strong>Durata:</strong> circa 45-60 minuti</p>
+
+  <p><strong>🔹 Serve essere allenati?</strong><br>
+  No. È adatto a tutti, anche ai principianti. Si può iniziare piano e aumentare l’intensità nel tempo.</p>
+</div>
+<button class="accordion-btn" onclick="toggleAccordion('pilates')">Pilates</button>
+<div class="accordion-content" id="pilates">
+  <p><strong>🔹 Cos'è il Pilates?</strong><br>
+  È una ginnastica dolce che unisce movimenti lenti e controllati con una corretta respirazione.<br>
+  Serve a rafforzare i muscoli profondi e migliorare postura, equilibrio e consapevolezza del corpo.</p>
+
+  <p><strong>🔹 A cosa serve?</strong></p>
+  <ul>
+    <li>Migliora la postura e la schiena</li>
+    <li>Rinforza addome, glutei e zona lombare</li>
+    <li>Aumenta la flessibilità e l’equilibrio</li>
+    <li>Riduce tensioni, dolori e stress</li>
+    <li>Aiuta a prevenire infortuni e dolori articolari</li>
+  </ul>
+
+  <p><strong>🔹 Cosa si fa durante il corso?</strong></p>
+  <ul>
+    <li>Si lavora a corpo libero su un tappetino</li>
+    <li>Si fanno esercizi lenti e precisi, spesso da sdraiati o seduti</li>
+    <li>Si curano molto:
+      <ul>
+        <li>La respirazione</li>
+        <li>Il controllo dei movimenti</li>
+        <li>L’allineamento del corpo</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>Gli esercizi coinvolgono soprattutto il <strong>"core"</strong> (cioè addome, zona lombare e bacino).</p>
+  <p><strong>Durata:</strong> circa 45-60 minuti, in un ambiente tranquillo e silenzioso</p>
+</div>
+<button class="accordion-btn" onclick="toggleAccordion('pump')">Pump</button>
+<div class="accordion-content" id="pump">
+  <p><strong>🔹 Cos'è il Pump?</strong><br>
+  È un corso fitness con bilanciere, pensato per rafforzare e tonificare tutti i muscoli del corpo.<br>
+  Si fa a ritmo di musica e si lavora con carichi leggeri ma tante ripetizioni.</p>
+
+  <p><strong>🔹 A cosa serve?</strong></p>
+  <ul>
+    <li>Aumenta la forza muscolare</li>
+    <li>Rassoda gambe, braccia, glutei, petto, spalle e schiena</li>
+    <li>Migliora il tono muscolare senza diventare “troppo muscolosi”</li>
+    <li>Aiuta a bruciare calorie e accelerare il metabolismo</li>
+  </ul>
+
+  <p><strong>🔹 Cosa si fa durante il corso?</strong></p>
+  <ul>
+    <li>Si usa un bilanciere (con dischi regolabili in base alla forza di ognuno)</li>
+    <li>Ogni canzone è dedicata a un gruppo muscolare diverso<br>
+        (es. gambe, petto, spalle, schiena, addome…)</li>
+    <li>Si fanno esercizi semplici come:
+      <ul>
+        <li>Squat</li>
+        <li>Stacchi</li>
+        <li>Distensioni</li>
+        <li>Rematori</li>
+        <li>Curl per bicipiti</li>
+      </ul>
+    </li>
+    <li>Si seguono ritmo e sequenza dati dall’istruttore e dalla musica</li>
+  </ul>
+
+  <p><strong>Durata:</strong> circa 45-60 minuti</p>
+
+  <p><strong>🔹 Serve essere allenati?</strong><br>
+  No. È adatto anche ai principianti perché:</p>
+  <ul>
+    <li>Il peso del bilanciere si sceglie in base al proprio livello</li>
+    <li>I movimenti sono semplici e ripetuti</li>
+  </ul>
+
+  <p><strong>💡 Pump è ideale</strong> se vuoi rassodare tutto il corpo, aumentare forza e resistenza, con esercizi semplici ma efficaci, in un ambiente motivante.</p>
+</div>
+<button class="accordion-btn" onclick="toggleAccordion('trx')">TRX</button>
+<div class="accordion-content" id="trx">
+  <p><strong>🔹 Cos'è il TRX?</strong><br>
+  È un tipo di allenamento che si fa usando due cinghie sospese (collegate al soffitto o a una struttura).<br>
+  Si sfrutta il peso del proprio corpo per fare esercizi di forza, equilibrio e stabilità.</p>
+
+  <p><strong>🔹 A cosa serve?</strong></p>
+  <ul>
+    <li>Rinforza tutti i muscoli (soprattutto addome, braccia, schiena e gambe)</li>
+    <li>Migliora l’equilibrio e la postura</li>
+    <li>Aumenta la forza e la resistenza fisica</li>
+    <li>Allena anche i muscoli profondi, utili per proteggere la schiena</li>
+    <li>Fa bruciare calorie e stimola il metabolismo</li>
+  </ul>
+
+  <p><strong>🔹 Cosa si fa durante il corso?</strong></p>
+  <ul>
+    <li>Si usano solo le cinghie TRX, regolandole per vari esercizi</li>
+    <li>Il corpo è in sospensione parziale, quindi i muscoli lavorano di più</li>
+    <li>Si fanno esercizi come:
+      <ul>
+        <li>Squat</li>
+        <li>Piegamenti</li>
+        <li>Affondi</li>
+        <li>Plank</li>
+        <li>Rematore</li>
+        <li>Torsioni</li>
+      </ul>
+    </li>
+    <li>Ogni esercizio si può rendere più facile o difficile cambiando l'inclinazione del corpo</li>
+  </ul>
+
+  <p><strong>Durata:</strong> circa 45-60 minuti</p>
+
+  <p><strong>🔹 Serve essere allenati?</strong><br>
+  No. Anche se sembra “da atleti”, il TRX è adatto a tutti, perché:</p>
+  <ul>
+    <li>Gli esercizi si adattano al livello di ciascuno</li>
+    <li>Non serve essere forti o esperti per iniziare</li>
+  </ul>
+</div>
+<button class="accordion-btn" onclick="toggleAccordion('functional')">Functional Training</button>
+<div class="accordion-content" id="functional">
+  <p><strong>🔹 Cos'è il Functional Training?</strong><br>
+  È un tipo di allenamento che allena il corpo in modo “funzionale”, cioè con movimenti utili alla vita quotidiana: spingere, tirare, sollevare, piegarsi, ruotare.<br>
+  Si lavora a corpo libero o con attrezzi semplici, come kettlebell, pesetti, corde, palle mediche, elastici.</p>
+
+  <p><strong>🔹 A cosa serve?</strong></p>
+  <ul>
+    <li>Rinforza muscoli e articolazioni</li>
+    <li>Migliora forza, equilibrio, coordinazione e mobilità</li>
+    <li>Aumenta la resistenza e aiuta a dimagrire</li>
+    <li>Riduce il rischio di infortuni nella vita di tutti i giorni</li>
+    <li>Allena tutto il corpo in modo pratico e completo</li>
+  </ul>
+
+  <p><strong>🔹 Cosa si fa durante il corso?</strong></p>
+  <ul>
+    <li>Si alternano esercizi dinamici e funzionali, come:
+      <ul>
+        <li>Squat</li>
+        <li>Salti</li>
+        <li>Affondi</li>
+        <li>Piegamenti</li>
+        <li>Plank</li>
+        <li>Torsioni</li>
+      </ul>
+    </li>
+    <li>Si lavora spesso a circuiti (più esercizi uno dopo l’altro con pause brevi)</li>
+    <li>Si usano attrezzi vari o si lavora a corpo libero</li>
+    <li>Ogni lezione è diversa e coinvolge tutto il corpo</li>
+  </ul>
+
+  <p><strong>Durata:</strong> circa 45-60 minuti</p>
+
+  <p><strong>🔹 Serve essere allenati?</strong><br>
+  No. Anche se è un corso intenso, è adattabile:</p>
+  <ul>
+    <li>L’istruttore propone varianti più facili o più difficili</li>
+    <li>Si può fare anche se non si è allenati, migliorando col tempo</li>
+  </ul>
+</div>
 </section>
 
   <section id="video" class="box" data-aos="zoom-in-up">
@@ -736,9 +1054,9 @@ header img.visible {
   </p>
 
   <div class="social-icons">
-    <a href="https://www.instagram.com/newcentrosportitalia" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">Instagram
-    </a>
+    <a href="https://www.instagram.com/centrosportitalia_?igsh=a2Y4djZ1ZzBxa2Ez" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">Instagram
+</a>
     <a href="https://www.facebook.com/NewCentroSportItalia/?locale=it_IT" target="_blank">
       <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">Facebook
     </a>
@@ -1032,8 +1350,8 @@ document.addEventListener('DOMContentLoaded', () => {
       cognome: form.cognome.value,
       email: form.email.value,
       tipo: tipo,
-      giorno: form.data ? form.data.value : form.lezione?.value.split(" ")[0],
-      orario: form.orario ? form.orario.value : form.lezione?.value.split(" ")[1]
+      giorno: form.data ? form.data.value : form.lezione?.value?.split(" ")[0] || "Venerdì",
+orario: form.orario ? form.orario.value : form.lezione?.value?.split(" ")[1] || "19:30"
     };
 
     emailjs.send("service_14gxl7m", "template_4ay1tv7", data)
@@ -1045,6 +1363,42 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Errore EmailJS:", err);
       });
   };
+</script>
+<script>
+  let infoCorsiIndex = 0;
+
+  function scrollInfoCorsi(direction) {
+    const track = document.getElementById('infoCorsiTrack');
+    const cards = track.querySelectorAll('.box');
+    const card = cards[0];
+    const style = window.getComputedStyle(track);
+    const gap = parseInt(style.gap) || 30;
+
+    const cardWidth = card.offsetWidth + gap;
+
+    infoCorsiIndex += direction;
+
+    if (infoCorsiIndex < 0) infoCorsiIndex = 0;
+    if (infoCorsiIndex >= cards.length) infoCorsiIndex = cards.length - 1;
+
+    track.style.transform = `translateX(-${infoCorsiIndex * cardWidth}px)`;
+  }
+
+  window.addEventListener('resize', () => {
+    scrollInfoCorsi(0);
+  });
+</script>
+<script>
+  function toggleAccordion(id) {
+    const allContents = document.querySelectorAll('.accordion-content');
+    allContents.forEach(c => {
+      if (c.id === id) {
+        c.classList.toggle('active');
+      } else {
+        c.classList.remove('active');
+      }
+    });
+  }
 </script>
 </body>
 </html>
