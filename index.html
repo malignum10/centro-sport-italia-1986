@@ -367,6 +367,28 @@ header img.visible {
 .video-track video:hover {
   transform: scale(1.05);
 }
+#video .video-track img {
+  width: 100%;
+  flex: 0 0 100%;
+  max-width: 360px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.35);
+  transition: transform 0.4s ease;
+}
+
+#video .video-track img:hover {
+  transform: scale(1.05);
+}
+
+#video .video-track img{
+  flex: 0 0 100%;
+  max-width: 360px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.35);
+  transition: transform 0.4s ease;
+}
+#video .video-track img:hover{ transform: scale(1.05); }
+
 
 .arrow {
   position: absolute;
@@ -590,7 +612,16 @@ header img.visible {
   from { opacity: 0; transform: translateY(-8px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
+/* AVVISI: immagini non schiacciate */
+#avvisi .video-track { align-items: center; }
+#avvisi .video-track img{
+  width: auto !important;
+  height: auto !important;
+  max-width: min(360px, 90vw);
+  max-height: 80vh;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
   </style>
 </head>
 <body>
@@ -617,13 +648,20 @@ header img.visible {
 </nav>
 
 
-  <section id="offerta" class="box" data-aos="zoom-in">
-    <h2>Offerta di Luglio</h2>
-    <p><strong>12 mesi + 3 in omaggio</strong> a soli <strong>100 euro</strong>!</p>
-    <p>Promo valida fino al <strong>31 Luglio</strong>.</p>
-    <p>Affrettati, solo 60 abbonamenti disponibili!</p>
-    <img src="WhatsApp Image 2025-07-14 at 12.33.47.jpeg" alt="Offerta Luglio">
-  </section>
+<section id="offerta" class="box" data-aos="zoom-in">
+  <h2>Offerta di Novembre</h2>
+  <p><strong>Al Centro Sport Italia è già tempo di regali! 🎁</strong></p>
+  <p>
+    Perché i mesi di <strong>novembre e dicembre</strong> te li regaliamo noi:
+    <strong>+ 12 mesi</strong> a solo <strong>129 euro!</strong>
+  </p>
+  <p>
+    Promo valida fino al <strong>30 novembre</strong>… ti aspettiamo!
+  </p>
+  <img src="offera_novembre_2025.jpg" alt="Offerta Novembre e Dicembre Gratis">
+</section>
+
+
 
   <section id="orari" class="box" data-aos="fade-right">
   <h2>Orari di Apertura</h2>
@@ -649,10 +687,11 @@ header img.visible {
   <img
     id="corsi-img"
     class="corsi-img"
-    src="Planning corsi attivo dal 7 aprile all’11 luglio.TRX dal mese di luglio verrà sospeso e ripartir.jpg"
-    alt="Planning Corsi"
+    src="corsi_2025.jpg"
+    alt="Planning corsi fitness 2025"
   />
 </section>
+
 <section id="info-corsi" class="box" data-aos="fade-up">
   <h2 style="color: #ffd700; text-align: center;">Info sui corsi</h2>
 
@@ -937,6 +976,7 @@ header img.visible {
       <video controls poster="anteprima1.jpg">
         <source src="video4.mp4" type="video/mp4">
       </video>
+	    <img src="moltodipiu.png" alt="Puoi trovare molto di più sui nostri social!">
     </div>
     <button class="arrow right" onclick="scrollVideos(1)">&#10145;</button>
     <button class="arrow left" onclick="scrollVideos(-1)">&#11013;</button>
@@ -948,81 +988,44 @@ header img.visible {
   <h2 style="color: #ffd700; text-align: center;">Avvisi e Comunicazioni</h2>
   <div class="video-carousel">
     <div class="video-track" id="avvisiTrack">
-      <img src="avviso.jpg" alt="Avviso 1" />
-      <img src="avviso1.jpg" alt="Avviso 2" />
-      <img src="avviso2.jpg" alt="Avviso 3" />
-      <img src="avviso3.jpg" alt="Avviso 4" />
-      <img src="avviso4.jpg" alt="Avviso 5" />
+	<img src="avviso.jpg" alt="Avviso generale" />
+      <img src="sala_info.jpg" alt="Orari e info sala attrezzi" />
+
+      <img src="riaperturapilates.jpg" alt="Riparte il corso di Pilates" />
     </div>
     <button class="arrow right" onclick="scrollAvvisi(1)">&#10145;</button>
     <button class="arrow left" onclick="scrollAvvisi(-1)">&#11013;</button>
   </div>
 </section>
 
-  <section id="prenota" class="box" data-aos="zoom-in-up">
-  <h2>Prenota il tuo ingresso</h2>
-  <div class="tabs">
-    <button class="tab-btn" onclick="showForm('sala')">Prenota Ingresso Sala</button>
-    <button class="tab-btn" onclick="showForm('pilates')">Prenota Lezione Pilates</button>
-    <button class="tab-btn" onclick="showForm('trx')">Prenota Lezione TRX</button>
-  </div>
 
-  <!-- FORM SALA -->
-  <div id="form-sala" class="form-section login-form">
-    <form onsubmit="submitForm(event, 'sala')">
-      <input type="text" name="nome" placeholder="Nome" required>
-      <input type="text" name="cognome" placeholder="Cognome" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="telefono" placeholder="Cellulare (facoltativo)">
-      <input type="date" name="data" required>
-      <select name="orario" required>
-        <option value="">Seleziona orario</option>
-        <option value="09:00">09:00</option>
-        <option value="10:00">10:00</option>
-        <option value="11:00">11:00</option>
-        <option value="12:30">12:30</option>
-        <option value="15:00">15:00</option>
-        <option value="16:00">16:00</option>
-        <option value="17:00">17:00</option>
-        <option value="18:00">18:00</option>
-        <option value="19:00">19:00</option>
-        <option value="20:00">20:00</option>
-        <option value="21:30">21:30</option>
-      </select>
-      <button type="submit">Prenota</button>
-    </form>
-  </div>
+ <section id="prenota" class="box" data-aos="zoom-in-up">
+  <h2>Prenota la tua lezione</h2>
+  <p style="text-align:center;max-width:750px;margin:0 auto 20px;">
+    Per prenotare la tua lezione scarica la nostra app <strong>MOOPLAN</strong>.
+  </p>
 
-  <!-- FORM PILATES -->
-  <div id="form-pilates" class="form-section login-form">
-    <form onsubmit="submitForm(event, 'pilates')">
-      <input type="text" name="nome" placeholder="Nome" required>
-      <input type="text" name="cognome" placeholder="Cognome" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="telefono" placeholder="Cellulare (facoltativo)">
-      <select name="lezione" required>
-        <option value="">Seleziona giorno e orario</option>
-        <option value="Martedì 10:30">Martedì 10:30</option>
-        <option value="Martedì 18:15">Martedì 18:15</option>
-        <option value="Giovedì 10:30">Giovedì 10:30</option>
-        <option value="Giovedì 18:15">Giovedì 18:15</option>
-      </select>
-      <button type="submit">Prenota</button>
-    </form>
-  </div>
+  <!-- immagine dell'app -->
+  <img src="mooplan.jpg" alt="App MOOPLAN" style="max-width:360px;width:100%;border-radius:16px;display:block;margin:10px auto 20px;box-shadow:0 0 20px rgba(255,215,0,0.35);" />
 
-  <!-- FORM TRX -->
-  <div id="form-trx" class="form-section login-form">
-    <form onsubmit="submitForm(event, 'trx')">
-      <input type="text" name="nome" placeholder="Nome" required>
-      <input type="text" name="cognome" placeholder="Cognome" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="telefono" placeholder="Cellulare (facoltativo)">
-      <p style="margin:10px 0;font-weight:bold;">Lezione: Venerdì alle 19:30</p>
-      <button type="submit">Prenota</button>
-    </form>
+  <!-- pulsanti store -->
+  <div class="store-buttons" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+    <a class="store-btn" href="https://play.google.com/store/apps/details?id=it.mooplan.master&pcampaignid=web_share" target="_blank" rel="noopener" 
+       style="display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:40px;background:#ffd700;color:#000;font-weight:700;text-decoration:none;box-shadow:0 5px 15px rgba(255,215,0,0.4);">
+      <!-- icona android -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="22" height="22" aria-hidden="true"><path fill="#000" d="M88.4 41.9h8.6v34.5c0 4-3.2 7.2-7.2 7.2s-7.2-3.2-7.2-7.2V41.9h5.8zM30.9 41.9h8.6v34.5c0 4-3.2 7.2-7.2 7.2s-7.2-3.2-7.2-7.2V41.9h5.8z"/><path fill="#000" d="M40.9 41.9h46.3v41.7c0 4-3.2 7.2-7.2 7.2H48.1c-4 0-7.2-3.2-7.2-7.2V41.9z"/><circle cx="49.9" cy="31.3" r="4.1" fill="#000"/><circle cx="78.1" cy="31.3" r="4.1" fill="#000"/><path fill="#000" d="M81.8 25.8l6.1-10a1.6 1.6 0 10-2.8-1.6l-6.4 10.5a29.2 29.2 0 00-29.3 0L42.9 14.2a1.6 1.6 0 10-2.8 1.6l6.1 10a26 26 0 00-10.4 20.6h56.4c0-8.6-4.1-16.4-10.4-20.6z"/></svg>
+      Scarica su Google Play
+    </a>
+
+    <a class="store-btn" href="https://apps.apple.com/it/app/mooplan/id1442617020" target="_blank" rel="noopener"
+       style="display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:40px;background:#fff;color:#000;font-weight:700;text-decoration:none;border:2px solid #ffd700;">
+      <!-- icona apple -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="20" height="20" aria-hidden="true"><path fill="#000" d="M84.5 68.1c.1 14.6 12.8 19.4 13 19.5-10.8 15.8-27.6 16.9-33.6 17.1-14.3.1-27.5-8.5-34.8-21.5-14.9-25.9-3.8-64 10.6-64 3.8-.1 8.4 2.5 12.3 2.5 3.9 0 8.6-2.4 14.5-2.1 2.5.1 9.6 1 14.1 7.6-.4.3-8.4 4.9-8.3 14.8.1 11.8 9.9 15.7 9.9 15.7zM70.5 17.6c2.6-3.2 4.4-7.6 3.9-12-3.8.2-8.5 2.6-11.2 5.8-2.5 2.9-4.6 7.4-4 11.8 4.3.4 8.7-2.2 11.3-5.6z"/></svg>
+      Scarica su App Store
+    </a>
   </div>
 </section>
+
 <section id="dove" class="box" data-aos="flip-left">
     <h2>Dove trovarci</h2>
     <p>Puoi trovarci sulla mappa cliccando qui sotto:</p>
@@ -1243,27 +1246,26 @@ window.addEventListener("scroll", () => {
   let currentIndex = 0;
 
   function scrollVideos(direction) {
-  const track = document.getElementById('videoTrack');
-  const videos = track.querySelectorAll('video');
-  const video = videos[0]; // un singolo video
-  const style = window.getComputedStyle(track);
-  const gap = parseInt(style.gap) || 0;
+    const track = document.getElementById('videoTrack');
+    const slides = track.querySelectorAll('video, img');
+    const first = slides[0];
+    const style = window.getComputedStyle(track);
+    const gap = parseInt(style.gap) || 0;
 
-  const videoWidth = video.offsetWidth + gap;
+    const slideWidth = first.offsetWidth + gap;
 
-  currentIndex += direction;
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = 0;
+    if (currentIndex >= slides.length) currentIndex = slides.length - 1;
 
-  if (currentIndex < 0) currentIndex = 0;
-  if (currentIndex >= videos.length) currentIndex = videos.length - 1;
-
-  track.style.transform = `translateX(-${currentIndex * videoWidth}px)`;
-}
-
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
 
   window.addEventListener('resize', () => {
-    scrollVideos(0); // Mantiene l'allineamento corretto
+    scrollVideos(0);
   });
 </script>
+
 <script>
   let avvisiIndex = 0;
 
