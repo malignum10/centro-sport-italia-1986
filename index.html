@@ -654,6 +654,34 @@ header img.visible {
   flex: 0 0 auto;
   object-fit: contain;
 }
+/* --- DECORAZIONI NATALIZIE --- */
+.christmas-box {
+  position: relative; /* Serve per posizionare le decorazioni */
+  border: 2px solid #d42426; /* Bordo Rosso Natale */
+  box-shadow: 0 0 25px rgba(212, 36, 38, 0.4); /* Alone rosso luminoso */
+  background: linear-gradient(to bottom, rgba(60, 10, 10, 0.9), rgba(0, 0, 0, 0.8)) !important; /* Sfumatura rossastra scura */
+  overflow: visible !important; /* Permette alle decorazioni di "uscire" un po' dai bordi */
+}
+
+.xmas-deco {
+  position: absolute;
+  font-size: 45px; /* Grandezza icone */
+  z-index: 20;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+  animation: floatXmas 3s ease-in-out infinite; /* Animazione galleggiante */
+}
+
+/* Posizioni delle decorazioni */
+.deco-tl { top: -25px; left: -20px; transform: rotate(-15deg); animation-delay: 0s; }   /* Albero in alto a sx */
+.deco-tr { top: -25px; right: -20px; transform: rotate(15deg); animation-delay: 1s; }  /* Babbo Natale in alto a dx */
+.deco-bl { bottom: -15px; left: -10px; font-size: 35px; animation-delay: 0.5s; } /* Fiocco neve in basso a sx */
+.deco-br { bottom: -15px; right: -10px; font-size: 35px; animation-delay: 1.5s; } /* Regalo in basso a dx */
+
+/* Animazione dolce movimento */
+@keyframes floatXmas {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(5deg); }
+}
   </style>
 </head>
 <body>
@@ -680,20 +708,21 @@ header img.visible {
 </nav>
 
 
-<section id="offerta" class="box" data-aos="zoom-in">
-  <h2>Offerta di Novembre</h2>
-  <p><strong>Al Centro Sport Italia è già tempo di regali! 🎁</strong></p>
+<section id="offerta" class="box christmas-box" data-aos="zoom-in">
+  <div class="xmas-deco deco-tl">🎄</div>
+  <div class="xmas-deco deco-tr">🎅</div>
+  <div class="xmas-deco deco-bl">❄️</div>
+  <div class="xmas-deco deco-br">🎁</div>
+
+  <h2 style="color: #ffd700; text-shadow: 0 0 10px red;">🎅 Offerta di Natale 🎅</h2>
+  <p><strong>Il vostro regalo di Natale è qui!</strong></p>
   <p>
-    Perché i mesi di <strong>novembre e dicembre</strong> te li regaliamo noi:
-    <strong>+ 12 mesi</strong> a solo <strong>129 euro!</strong>
+    Approfittane subito: promo valida solo fino al <br>
+    <strong style="color: #d42426; background: #fff; padding: 2px 8px; border-radius: 4px;">31 Dicembre ore 12:00!</strong>
   </p>
-  <p>
-    Promo valida fino al <strong>30 novembre</strong>… ti aspettiamo!
-  </p>
-  <img src="offera_novembre_2025.jpg" alt="Offerta Novembre e Dicembre Gratis">
+  
+  <img src="PROMO_DICEMBRE_25.JPG" alt="Offerta Dicembre - Il vostro regalo di Natale" style="border: 1px solid #d42426; box-shadow: 0 0 15px rgba(212,36,38,0.5);">
 </section>
-
-
 
   <section id="orari" class="box" data-aos="fade-right">
   <h2>Orari di Apertura</h2>
