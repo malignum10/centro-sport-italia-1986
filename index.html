@@ -685,6 +685,62 @@ header img.visible {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-6px) rotate(5deg); }
 }
+/* --- STILE GENNAIO & BEFANA --- */
+.january-box {
+  position: relative;
+  /* Sfumatura scura ma con toni blu notte/ghiaccio */
+  background: linear-gradient(to bottom, rgba(10, 30, 50, 0.9), rgba(0, 0, 0, 0.9)) !important;
+  border: 2px solid #87ceeb !important; /* Bordo Azzurro Ghiaccio */
+  box-shadow: 0 0 25px rgba(135, 206, 235, 0.5) !important; /* Alone luminoso ghiaccio */
+  overflow: visible !important;
+}
+
+.jan-deco {
+  position: absolute;
+  z-index: 20;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+  animation: floatJan 3s ease-in-out infinite;
+  cursor: default;
+  /* IMPORTANTE: Questo permette di cliccare sui link "sotto" l'emoji */
+  pointer-events: none; 
+}
+
+/* Animazione galleggiamento */
+@keyframes floatJan {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* Posizionamento decorazioni */
+.jan-befana { 
+  /* Ho ridotto i valori negativi per farla rientrare */
+  top: -20px;   /* Era -45px */
+  right: -5px;  /* Era -25px */
+  font-size: 55px; /* Leggermente più piccola per sicurezza */
+  animation-delay: 0s; 
+  transform: rotate(10deg);
+}
+
+.jan-snow-1 { 
+  top: -25px; 
+  left: -20px; 
+  font-size: 40px; 
+  animation-delay: 1s; 
+}
+
+.jan-ice { 
+  bottom: -20px; 
+  left: -15px; 
+  font-size: 35px; 
+  animation-delay: 0.5s; 
+}
+
+.jan-stocking { 
+  bottom: -20px; 
+  right: -15px; 
+  font-size: 40px; 
+  animation-delay: 1.5s; 
+}
   </style>
 </head>
 <body>
@@ -698,9 +754,9 @@ header img.visible {
     <h1>Centro Sport Italia dal 1986</h1>
   </header>
 
-  <nav data-aos="fade-up">
+ <nav data-aos="fade-up">
   <a href="#offerta">Offerta</a>
-  <a href="#orari">Orari</a>
+  <a href="#open-day">Open Day</a> <a href="#orari">Orari</a>
   <a href="#video">I nostri video</a>
   <a href="#corsi">I nostri corsi</a>
   <a href="#info-corsi">Info corsi</a>
@@ -710,21 +766,73 @@ header img.visible {
   <a href="#contatti">Contatti</a>
 </nav>
 
-
-<section id="offerta" class="box christmas-box" data-aos="zoom-in">
-  <div class="xmas-deco deco-tl">🎄</div>
-  <div class="xmas-deco deco-tr">🎅</div>
-  <div class="xmas-deco deco-bl">❄️</div>
-  <div class="xmas-deco deco-br">🎁</div>
-
-  <h2 style="color: #ffd700; text-shadow: 0 0 10px red;">🎅 Offerta di Natale 🎅</h2>
-  <p><strong>Il vostro regalo di Natale è qui!</strong></p>
-  <p>
-    Approfittane subito: promo valida solo fino al <br>
-    <strong style="color: #d42426; background: #fff; padding: 2px 8px; border-radius: 4px;">31 Dicembre ore 12:00!</strong>
+<section id="offerta" class="box january-box" data-aos="zoom-in">
+  <div class="jan-deco jan-snow-1">❄️</div>   <div class="jan-deco jan-befana">🧙‍♀️🧹</div> <div class="jan-deco jan-ice">🧊</div>      <div class="jan-deco jan-stocking">🧦</div> <h2 style="color: #87ceeb; text-align: center; text-shadow: 0 0 10px #fff;">
+    ❄️ Offerta di GENNAIO ❄️
+  </h2>
+  
+  <p style="text-align: center; font-size: 1.2em; color: #e0f7fa;">
+    <strong>La Befana vien di notte... con un'offerta speciale!</strong><br>
+    È ora di sciogliere i grassi e tornare in forma.
   </p>
   
-  <img src="PROMO_DICEMBRE_25.JPG" alt="Offerta Dicembre - Il vostro regalo di Natale" style="border: 1px solid #d42426; box-shadow: 0 0 15px rgba(212,36,38,0.5);">
+  <p style="text-align: center; margin-bottom: 20px;">
+    Non congelare i tuoi buoni propositi: <br>
+    <span style="color: #000; background: linear-gradient(90deg, #87ceeb, #fff); padding: 6px 18px; border-radius: 20px; font-weight: bold; display: inline-block; margin-top: 10px; box-shadow: 0 0 15px rgba(135, 206, 235, 0.8);">
+      PROMO VALIDA FINO AL 31 GENNAIO
+    </span>
+  </p>
+  
+  <img 
+    src="PROMO_GENNAIO_26.jpg" 
+    alt="Offerta Gennaio - Centro Sport Italia" 
+    style="border: 2px solid #87ceeb; box-shadow: 0 0 20px rgba(135, 206, 235, 0.4); width: 100%; border-radius: 12px;"
+  >
+</section>
+<section id="open-day" class="box" data-aos="fade-up" style="border: 2px solid #ffd700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);">
+  <h2 style="color: #ffd700; text-align: center; text-transform: uppercase; font-size: 2em;">
+    🎉 OPEN DAY 2026 - 40° ANNIVERSARIO 🎉
+  </h2>
+  
+  <p style="text-align: center; font-size: 1.4em; font-family: 'Great Vibes', cursive; color: #fff; margin-bottom: 20px;">
+    "Da 40 anni al servizio dello sport"
+  </p>
+
+  <p style="text-align: center; font-size: 1.1em; line-height: 1.6;">
+    Quest'anno la palestra festeggia un traguardo importante: <strong>40 anni di attività!</strong> <br>
+    Per celebrare insieme, abbiamo pensato a un regalo speciale: <strong>regaliamo un accesso omaggio</strong> valido per tutto il 2026 a chiunque voglia venire ad allenarsi. <br>
+    <span style="color: #ffd700; font-weight: bold; font-size: 1.2em;">Non dovrai pagare nulla!</span>
+  </p>
+
+  <img 
+    src="Open_day.jpg" 
+    alt="Locandina Open Day 40 Anni Centro Sport Italia" 
+    style="width: 100%; max-width: 600px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 0 15px rgba(255,215,0,0.5);"
+  >
+
+  <div style="text-align: center; margin-top: 30px; padding: 20px; background: rgba(255, 215, 0, 0.1); border-radius: 15px;">
+    <p style="margin-bottom: 15px; font-weight: bold;">
+      Per prenotare il tuo ingresso gratuito chiama ora e indica la data della tua visita:
+    </p>
+    
+    <a href="tel:0819768302" style="
+       display: inline-flex;
+       align-items: center;
+       justify-content: center;
+       gap: 10px;
+       background: linear-gradient(145deg, #ffd700, #e0be00);
+       color: #000;
+       padding: 15px 35px;
+       border-radius: 50px;
+       font-weight: bold;
+       text-decoration: none;
+       font-size: 1.3em;
+       box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+       transition: transform 0.3s ease;
+    " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      📞 081 976 8302
+    </a>
+  </div>
 </section>
 
   <section id="orari" class="box" data-aos="fade-right">
