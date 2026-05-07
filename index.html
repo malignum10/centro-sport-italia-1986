@@ -93,13 +93,16 @@ header img.visible {
     h1, h2 { transition: transform 0.3s ease; }
     h1:hover, h2:hover { transform: scale(1.04); }
 
-    nav {
+nav {
       background: #000;
       padding: 10px 0;
       display: flex;
       justify-content: center;
       gap: 30px;
       flex-wrap: wrap;
+      position: sticky; /* <--- AGGIUNTA */
+      top: 0;           /* <--- AGGIUNTA */
+      z-index: 1000;    /* <--- AGGIUNTA */
     }
     nav a {
       color: #ffd700;
@@ -741,6 +744,74 @@ header img.visible {
   font-size: 40px; 
   animation-delay: 1.5s; 
 }
+/* --- STILE MENU HAMBURGER (PC e MOBILE) --- */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.hamburger {
+  display: none; /* Su PC è nascosto */
+  cursor: pointer;
+  flex-direction: column;
+  gap: 6px;
+  padding: 5px;
+}
+
+.hamburger span {
+  width: 35px;
+  height: 4px;
+  background-color: #ffd700;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+/* LA MAGIA DELLE MEDIA QUERIES: Regole attive SOLO su schermi piccoli (es. telefoni) */
+@media (max-width: 850px) {
+  nav {
+    justify-content: flex-end; /* Sposta l'hamburger a destra */
+    padding: 15px 20px;
+  }
+  
+  .hamburger {
+    display: flex; /* Mostra l'hamburger sul telefono */
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%; /* Si apre sotto la barra nera */
+    left: 0;
+    background: rgba(0, 0, 0, 0.95); /* Sfondo nero semi-trasparente */
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
+    max-height: 0; /* Nascosto di default */
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+  }
+
+  /* Quando il menù viene aperto tramite JavaScript */
+  .nav-links.active {
+    max-height: 600px; /* Abbastanza alto da mostrare tutti i link */
+    padding: 20px 0;
+    border-bottom: 2px solid #ffd700;
+  }
+
+  /* Animazione per far diventare l'hamburger una "X" */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+}
   </style>
 </head>
 <body>
@@ -754,16 +825,25 @@ header img.visible {
     <h1>Centro Sport Italia dal 1986</h1>
   </header>
 
- <nav data-aos="fade-up">
-  <a href="#offerta">Offerta</a>
-  <a href="#open-day">Open Day</a> <a href="#orari">Orari</a>
-  <a href="#video">I nostri video</a>
-  <a href="#corsi">I nostri corsi</a>
-  <a href="#info-corsi">Info corsi</a>
-  <a href="#avvisi">Avvisi</a> 
-  <a href="#prenota">Prenota</a>
-  <a href="#dove">Dove trovarci</a>
-  <a href="#contatti">Contatti</a>
+<nav data-aos="fade-up">
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="nav-links" id="nav-links">
+    <a href="#offerta">Offerta</a>
+    <a href="#open-day">Open Day</a> 
+    <a href="#orari">Orari</a>
+    <a href="#video">I nostri video</a>
+    <a href="#corsi">I nostri corsi</a>
+    <a href="#info-corsi">Info corsi</a>
+    <a href="#avvisi">Avvisi</a> 
+    <a href="#prenota">Prenota</a>
+    <a href="#dove">Dove trovarci</a>
+    <a href="#contatti">Contatti</a>
+  </div>
 </nav>
 
 <section id="offerta" class="box" data-aos="zoom-in" style="border: 2px solid #ffd700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);">
@@ -1599,6 +1679,30 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+</script>
+<script>
+  // Script per il Menù ad Hamburger
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    const links = document.querySelectorAll('.nav-links a');
+
+    // Apre e chiude il menù al click sull'hamburger
+    if(hamburger) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+    }
+
+    // Chiude in automatico la tendina quando clicchi su un link
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+  });
 </script>
 </body>
 </html>
