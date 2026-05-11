@@ -496,8 +496,7 @@ nav {
 }
 
 #preloader-logo {
-  width: 180px;
-  animation: logoScale 1.5s ease-in-out infinite alternate;
+  /* Animazione di molleggio rimossa per mantenere il video fermo */
 }
 #preloader-logo.move-to-header {
   position: absolute;
@@ -816,7 +815,9 @@ nav {
 </head>
 <body>
 <div id="preloader">
-  <img src="logo-trasparente.png" alt="Logo Centro Sport Italia" id="preloader-logo">
+  <video id="preloader-logo" autoplay muted playsinline style="width: 350px; mix-blend-mode: screen; -webkit-mask-image: radial-gradient(circle, black 45%, transparent 68%); mask-image: radial-gradient(circle, black 45%, transparent 68%);">
+    <source src="LOGO_NOSFONDO.mp4" type="video/mp4">
+  </video>
 </div>
 <header data-aos="fade-down">
   <img src="logo-trasparente.png" alt="Logo Centro Sport Italia" id="header-logo" class="logo-header-target" onclick="location.reload()">
@@ -1568,25 +1569,39 @@ window.addEventListener("scroll", () => {
   });
 </script>
 <script>
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const preloader = document.getElementById('preloader');
-  const preloaderLogo = document.getElementById('preloader-logo');
+  const videoLogo = document.getElementById('preloader-logo');
   const headerLogo = document.getElementById('header-logo');
 
-setTimeout(() => {
-  preloaderLogo.classList.add('animate-implode'); // 👈 QUESTA È LA RIGA MANCANTE
-  preloader.classList.add('remove-blur');
+  // Funzione che gestisce la chiusura fluida del preloader
+  const chiudiPreloader = () => {
+    if(videoLogo) videoLogo.classList.add('animate-implode'); 
+    if(preloader) preloader.classList.add('remove-blur');
 
-  setTimeout(() => {
-    preloader.classList.add('hide');
-    headerLogo.classList.add('animate-in');
-  }, 200);
+    setTimeout(() => {
+      if(preloader) preloader.classList.add('hide');
+      if(headerLogo) headerLogo.classList.add('animate-in');
+    }, 200);
 
-  setTimeout(() => {
-    preloader.remove();
-  }, 1500);
-}, 300);
+    setTimeout(() => {
+      if(preloader) preloader.remove();
+    }, 1500);
+  };
 
+  if (videoLogo) {
+    // Quando l'MP4 finisce, fa partire la chiusura!
+    videoLogo.addEventListener('ended', chiudiPreloader);
+    
+    // Rete di sicurezza (se un telefono blocca l'autoplay del video)
+    setTimeout(() => {
+      if (document.getElementById('preloader')) {
+        chiudiPreloader();
+      }
+    }, 4500);
+  } else {
+    window.addEventListener('load', chiudiPreloader);
+  }
 });
 </script>
 <script>
