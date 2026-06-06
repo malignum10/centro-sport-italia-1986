@@ -649,15 +649,16 @@ nav {
   from { opacity: 0; transform: translateY(-8px); }
   to { opacity: 1; transform: translateY(0); }
 }
-/* AVVISI: immagini non schiacciate */
+/* AVVISI: immagini non schiacciate e centrate */
 #avvisi .video-track { align-items: center; }
 #avvisi .video-track img{
-  width: auto !important;
+  width: 100% !important;
   height: auto !important;
   max-width: min(360px, 90vw);
   max-height: 80vh;
-  flex: 0 0 auto;
+  flex: 0 0 100% !important;
   object-fit: contain;
+  margin: 0 auto;
 }
 /* --- DECORAZIONI NATALIZIE --- */
 .christmas-box {
@@ -849,28 +850,28 @@ nav {
 
 <section id="offerta" class="box" data-aos="zoom-in" style="border: 2px solid #ffd700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);">
   <h2 style="color: #ffd700; text-align: center; text-transform: uppercase; font-size: 2em; text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);">
-    🔥 SUPER PROMO DI MAGGIO 🔥
+    🔥 PROMOZIONE SPECIALE GIUGNO 🔥
   </h2>
   
   <p style="text-align: center; font-size: 1.2em; color: #fff; line-height: 1.5;">
-    <strong>Il vero Fitness dal 1986. Preparati all'estate con un'offerta irripetibile!</strong><br>
-    Abbonati per 12 mesi a soli <strong>79€</strong> e ti regaliamo <strong>3 MESI (Giugno, Luglio e Agosto) in omaggio!</strong>
+    <strong>Il vero Fitness dal 1986. Preparati all'estate al fresco con la nostra ARIA CONDIZIONATA!</strong><br>
+    Incredibile offerta <strong>12 + 12 MESI IN REGALO</strong> a soli <strong>179€</strong>!<br>
+    <span style="font-size: 1.1em; color: #ffd700;"><em>Acquista oggi... e se vuoi inizi a settembre!</em></span>
   </p>
 
   <p style="text-align: center; font-size: 1.1em; color: #ffd700; margin-top: 10px;">
-    ⚠️ <em>Affrettati, sono disponibili <strong>solo 70 abbonamenti</strong>!</em><br>
-    <span style="color: #fff; font-size: 0.9em;">(Inoltre solo a maggio, vieni in sede a scoprire come avere altri 6 mesi GRATIS da aggiungere al tuo abbonamento!)</span>
+    ⚠️ <em>AFFRETTATI! Sono disponibili <strong>solo 80 abbonamenti</strong>!</em>
   </p>
   
   <p style="text-align: center; margin-bottom: 25px;">
     <span style="color: #000; background: linear-gradient(90deg, #ffd700, #e0be00); padding: 8px 22px; border-radius: 20px; font-weight: bold; display: inline-block; margin-top: 10px; box-shadow: 0 0 15px rgba(255, 215, 0, 0.6); font-size: 1.1em;">
-      PROMO VALIDA ENTRO IL 30 MAGGIO
+      PROMO VALIDA ENTRO IL 30 GIUGNO
     </span>
   </p>
   
   <img 
-    src="offerta_maggio.jpg" 
-    alt="Offerta Maggio - Centro Sport Italia" 
+    src="promo_giugno_26.jpeg" 
+    alt="Promozione Speciale Giugno 12+12 Mesi - Centro Sport Italia" 
     style="border: 2px solid #ffd700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); width: 100%; border-radius: 12px; display: block; margin: 0 auto;"
   >
 </section>
@@ -1249,7 +1250,7 @@ nav {
   <h2 style="color: #ffd700; text-align: center;">Avvisi e Comunicazioni</h2>
   <div class="video-carousel">
     <div class="video-track" id="avvisiTrack">
-      <img src="avvisocupon_novembre2025.jpg" alt="Avviso Coupon - Porta un amico e guadagna mesi gratis" />
+      <img src="avviso_agosto (1).jpeg" alt="Avviso Orari Estivi - Nessuna Variazione" />
       
       <img src="avviso.jpg" alt="Avviso generale" />
       <img src="sala_info.jpg" alt="Orari e info sala attrezzi" />
@@ -1576,17 +1577,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Funzione che gestisce la chiusura fluida del preloader
   const chiudiPreloader = () => {
+    
+    // 1. Facciamo rimpicciolire SOLO il logo. Lo sfondo rimane fermo e intatto.
     if(videoLogo) videoLogo.classList.add('animate-implode'); 
-    if(preloader) preloader.classList.add('remove-blur');
 
+    // 2. Aspettiamo 1.1 secondi (il tempo che il logo ci mette a sparire)
     setTimeout(() => {
+      // 3. SOLO ORA facciamo svanire lo sfondo e la sfocatura
+      if(preloader) preloader.classList.add('remove-blur');
       if(preloader) preloader.classList.add('hide');
+      
+      // E facciamo apparire il logo piccolo in alto nella barra gialla
       if(headerLogo) headerLogo.classList.add('animate-in');
-    }, 200);
+    }, 1100); 
 
+    // 4. Pulizia finale: rimuoviamo il codice del preloader per non appesantire il sito
     setTimeout(() => {
       if(preloader) preloader.remove();
-    }, 1500);
+    }, 2500);
   };
 
   if (videoLogo) {
