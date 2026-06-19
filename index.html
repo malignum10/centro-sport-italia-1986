@@ -816,9 +816,7 @@ nav {
 </head>
 <body>
 <div id="preloader">
-<video id="preloader-logo" autoplay muted playsinline style="width: 350px; -webkit-mask-image: radial-gradient(circle, black 45%, transparent 68%); mask-image: radial-gradient(circle, black 45%, transparent 68%);">
-    <source src="Composizione logo 11.webm" type="video/webm">
-  </video>
+  <img id="preloader-logo" src="Composizionelogo11.webp" style="width: 350px; -webkit-mask-image: radial-gradient(circle, black 45%, transparent 68%); mask-image: radial-gradient(circle, black 45%, transparent 68%);">
 </div>
 <header data-aos="fade-down">
   <img src="logo-trasparente.png" alt="Logo Centro Sport Italia" id="header-logo" class="logo-header-target" onclick="location.reload()">
@@ -1572,41 +1570,34 @@ window.addEventListener("scroll", () => {
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const preloader = document.getElementById('preloader');
-  const videoLogo = document.getElementById('preloader-logo');
+  const logoAnimato = document.getElementById('preloader-logo');
   const headerLogo = document.getElementById('header-logo');
 
   // Funzione che gestisce la chiusura fluida del preloader
   const chiudiPreloader = () => {
     
-    // 1. Facciamo rimpicciolire SOLO il logo. Lo sfondo rimane fermo e intatto.
-    if(videoLogo) videoLogo.classList.add('animate-implode'); 
+    // 1. Facciamo rimpicciolire SOLO il logo.
+    if(logoAnimato) logoAnimato.classList.add('animate-implode'); 
 
-    // 2. Aspettiamo 1.1 secondi (il tempo che il logo ci mette a sparire)
+    // 2. Aspettiamo 1.1 secondi
     setTimeout(() => {
-      // 3. SOLO ORA facciamo svanire lo sfondo e la sfocatura
+      // 3. Facciamo svanire lo sfondo e la sfocatura
       if(preloader) preloader.classList.add('remove-blur');
       if(preloader) preloader.classList.add('hide');
       
-      // E facciamo apparire il logo piccolo in alto nella barra gialla
+      // Facciamo apparire il logo piccolo in alto
       if(headerLogo) headerLogo.classList.add('animate-in');
     }, 1100); 
 
-    // 4. Pulizia finale: rimuoviamo il codice del preloader per non appesantire il sito
+    // 4. Pulizia finale
     setTimeout(() => {
       if(preloader) preloader.remove();
     }, 2500);
   };
 
-  if (videoLogo) {
-    // Quando l'MP4 finisce, fa partire la chiusura!
-    videoLogo.addEventListener('ended', chiudiPreloader);
-    
-    // Rete di sicurezza (se un telefono blocca l'autoplay del video)
-    setTimeout(() => {
-      if (document.getElementById('preloader')) {
-        chiudiPreloader();
-      }
-    }, 4500);
+if (logoAnimato) {
+    // L'animazione dura circa 2.4 secondi. Chiudiamo a 2.3 secondi (2300ms) per nascondere il "riavvio" del loop!
+    setTimeout(chiudiPreloader, 2400);
   } else {
     window.addEventListener('load', chiudiPreloader);
   }
