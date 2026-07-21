@@ -921,20 +921,89 @@ nav {
   </div>
 </section>
 
-  <section id="orari" class="box" data-aos="fade-right">
+<section id="orari" class="box" data-aos="fade-right">
   <h2>Orari di Apertura</h2>
   <p>Lunedì - Venerdì: 8:00 - 22:30</p>
   <p>Sabato: 9:00 - 13:30</p>
   
-  <img
-    id="orari-img"
-    src="orari.jpg"
-    alt="Foto orari"
-    class="orari-hidden"
-  />
+  <!-- WRAPPER ORARIO STANDARD -->
+  <div id="orari-standard-wrapper" style="transition: opacity 0.4s ease, transform 0.4s ease; opacity: 1; transform: translateY(0) scale(1);">
+    
+    <!-- PULSANTE ORARI AGOSTO -->
+    <button id="btn-orari-agosto" onclick="toggleOrari(true)" style="background: linear-gradient(145deg, #ffd700, #e0be00); color: #000; padding: 12px 25px; font-size: 16px; font-weight: bold; text-transform: uppercase; border: none; border-radius: 40px; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4); display: block; margin: 20px auto; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      Orari Agosto
+    </button>
+
+    <!-- IMMAGINE ORARIO STANDARD -->
+    <img
+      id="orari-img"
+      src="orari.jpg"
+      alt="Foto orari"
+      class="orari-hidden"
+    />
+  </div>
+
+  <!-- CONTENITORE ORARI AGOSTO (Nascosto e sfumato di default) -->
+  <div id="orari-agosto-container" style="display: none; opacity: 0; transform: translateY(20px) scale(0.98); transition: opacity 0.4s ease, transform 0.4s ease; position: relative; max-width: 600px; margin: 25px auto 0;">
+    
+    <!-- FRECCIA INDIETRO -->
+    <button onclick="toggleOrari(false)" style="position: absolute; top: 10px; left: 10px; background: rgba(0, 0, 0, 0.8); color: #ffd700; border: 2px solid #ffd700; border-radius: 50%; width: 45px; height: 45px; font-size: 22px; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 0 10px rgba(0,0,0,0.5);" onmouseover="this.style.transform='scale(1.1)'; this.style.background='#000';" onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(0,0,0,0.8)';">
+      ⬅
+    </button>
+
+    <!-- IMMAGINE ORARIO AGOSTO -->
+    <img
+      id="orari-agosto-img"
+      src="avviso_agosto.jpg"
+      alt="Orari Agosto"
+      style="width: 100%; border-radius: 12px; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); display: block;"
+    />
+  </div>
 </section>
 
+<!-- SCRIPT PER L'ANIMAZIONE FLUIDA DEGLI ORARI -->
+<script>
+  function toggleOrari(mostraAgosto) {
+    const standardWrapper = document.getElementById('orari-standard-wrapper');
+    const agostoContainer = document.getElementById('orari-agosto-container');
 
+    if (mostraAgosto) {
+      // 1. Dissolvenza in uscita per l'orario standard
+      standardWrapper.style.opacity = '0';
+      standardWrapper.style.transform = 'translateY(-20px) scale(0.98)';
+      
+      setTimeout(() => {
+        // 2. Nascondi lo standard e prepara il div di agosto
+        standardWrapper.style.display = 'none';
+        agostoContainer.style.display = 'block';
+        
+        // Forza un minuscolo "refresh" visivo al browser prima di avviare la nuova animazione
+        void agostoContainer.offsetWidth; 
+
+        // 3. Dissolvenza in entrata per l'orario di agosto
+        agostoContainer.style.opacity = '1';
+        agostoContainer.style.transform = 'translateY(0) scale(1)';
+      }, 400); // 400 millisecondi di transizione
+
+    } else {
+      // 1. Dissolvenza in uscita per l'orario di agosto
+      agostoContainer.style.opacity = '0';
+      agostoContainer.style.transform = 'translateY(20px) scale(0.98)';
+      
+      setTimeout(() => {
+        // 2. Nascondi agosto e prepara lo standard
+        agostoContainer.style.display = 'none';
+        standardWrapper.style.display = 'block';
+        
+        void standardWrapper.offsetWidth;
+
+        // 3. Dissolvenza in entrata per l'orario standard
+        standardWrapper.style.opacity = '1';
+        standardWrapper.style.transform = 'translateY(0) scale(1)';
+      }, 400);
+    }
+  }
+</script>
 
   
 
@@ -1291,7 +1360,7 @@ nav {
     La tua opinione è importante per noi! Se ti alleni al <strong>Centro Sport Italia</strong> e ti trovi bene, lasciaci una recensione su Google e ritira il tuo regalo in segreteria!
   </p>
 
-  <a href="https://www.google.com/search?sa=X&sca_esv=586549e6208f869a&rlz=1C1CHBD_itIT1183IT1183&biw=718&bih=730&sxsrf=APpeQntAWbRIGEwhyXKi3IYe98zueiPDYQ:1784368014950&q=Centro+Sport+Italia+1986+Recensioni&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2MjI2MjIzMTWxMDU2MTS0NDA33cDI-IpR2Tk1r6QoXyG4IL-oRMGzJDEnM1HB0NLCTCEoNTk1rzgzPy9zESsxqgDov9AxZgAAAA&rldimm=2232264548534119075&tbm=lcl&hl=it-IT&ved=2ahUKEwj-wLft-NuVAxXV8bsIHdL1IXsQ9fQKegQILhAG#lkt=LocalPoiReviews" target="_blank" rel="noopener noreferrer" style="
+  <a href="https://share.google/mIlfs4607ye7mmHzr" target="_blank" rel="noopener noreferrer" style="
     display: inline-flex;
     align-items: center;
     justify-content: center;
