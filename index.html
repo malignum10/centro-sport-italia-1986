@@ -812,6 +812,164 @@ nav {
     transform: translateY(-10px) rotate(-45deg);
   }
 }
+/* =========================================================
+   ABBONAMENTI ONLINE - NEXI XPAY
+   ========================================================= */
+
+#abbonamenti {
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.30);
+}
+
+.abbonamenti-title {
+  color: #ffd700;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.abbonamenti-subtitle {
+  text-align: center;
+  color: #fff;
+  font-size: 1.05em;
+  max-width: 700px;
+  margin: 0 auto 25px;
+  line-height: 1.6;
+}
+
+.abbonamenti-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 25px;
+}
+
+.abbonamento-card {
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    rgba(25, 25, 25, 0.96),
+    rgba(0, 0, 0, 0.98)
+  );
+  border: 2px solid rgba(255, 215, 0, 0.65);
+  border-radius: 20px;
+  padding: 30px 22px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.abbonamento-card:hover {
+  transform: translateY(-6px);
+  border-color: #ffd700;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.25);
+}
+
+.abbonamento-badge {
+  display: inline-block;
+  background: #ffd700;
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 30px;
+  margin-bottom: 15px;
+}
+
+.abbonamento-card h3 {
+  color: #fff;
+  font-size: 1.45em;
+  margin: 5px 0 12px;
+}
+
+.abbonamento-descrizione {
+  color: #ddd;
+  font-size: 0.95em;
+  min-height: 48px;
+  line-height: 1.5;
+}
+
+.abbonamento-prezzo {
+  color: #ffd700;
+  font-size: 3.1em;
+  font-weight: 700;
+  margin: 18px 0;
+  line-height: 1;
+}
+
+.abbonamento-prezzo .euro {
+  font-size: 0.55em;
+  vertical-align: top;
+  position: relative;
+  top: 8px;
+  margin-right: 3px;
+}
+
+.abbonamento-btn {
+  width: 100%;
+  max-width: 280px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(145deg, #ffd700, #e0be00);
+  color: #000;
+  padding: 15px 24px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 5px 18px rgba(255, 215, 0, 0.35);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.abbonamento-btn:hover {
+  transform: scale(1.05);
+  background: #fff;
+  box-shadow: 0 7px 22px rgba(255, 215, 0, 0.50);
+}
+
+.abbonamento-btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+
+.xpay-status {
+  text-align: center;
+  margin: 25px auto 0;
+  color: #ffd700;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.xpay-sicurezza {
+  text-align: center;
+  color: #bbb;
+  font-size: 0.82em;
+  margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+  .abbonamenti-title {
+    font-size: 1.65em;
+  }
+
+  .abbonamento-prezzo {
+    font-size: 2.8em;
+  }
+
+  .abbonamento-card {
+    padding: 25px 18px;
+  }
+}
   </style>
 </head>
 <body>
@@ -834,6 +992,7 @@ nav {
 
   <div class="nav-links" id="nav-links">
     <a href="#offerta">Offerta</a>
+	<a href="#abbonamenti">Abbonamenti</a>
     <a href="#open-day">Open Day</a> 
     <a href="#orari">Orari</a>
     <a href="#video">I nostri video</a>
@@ -849,12 +1008,12 @@ nav {
 
 <section id="offerta" class="box" data-aos="zoom-in" style="border: 2px solid #ffd700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);">
   <h2 style="color: #ffd700; text-align: center; text-transform: uppercase; font-size: 2em; text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);">
-    🔥 PROMO SETTEMBRE 🔥
+    🔥 PROMO OTTOBRE 🔥
   </h2>
   
   <p style="text-align: center; font-size: 1.2em; color: #fff; line-height: 1.5;">
     Inizia la nuova stagione nel migliore dei modi!<br>
-    Incredibile offerta <strong>12 MESI + 3 IN REGALO</strong> a soli <strong>69€</strong>!<br>
+    Incredibile offerta <strong>12 MESI </strong> a soli <strong>69€</strong>!<br>
     <span style="font-size: 1.05em; color: #fff;">💪 <em><strong>Corsi Fitness Musicale</strong>, <strong>Sala Attrezzi</strong> e <strong>Schede Personalizzate</strong> inclusi!</em></span>
   </p>
 
@@ -863,7 +1022,7 @@ nav {
   </p>
   
   <img 
-    src="PROMO_SETTEMBRE_26.jpg" 
+    src="PROMO_OTTOBRE_26.jpg" 
     alt="Promo Settembre Centro Sport Italia: 12 mesi + 3 in regalo a soli 69€" 
     style="border: 2px solid #ffd700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); width: 100%; border-radius: 12px; display: block; margin: 20px auto;"
   >
@@ -874,6 +1033,73 @@ nav {
     </a>
   </div>
 </section>
+<!-- ======================================================
+     ABBONAMENTI ONLINE
+     ====================================================== -->
+
+<section id="abbonamenti" class="box" data-aos="zoom-in">
+
+  <h2 class="abbonamenti-title">
+    🛒 Abbonamenti Online
+  </h2>
+
+  <p class="abbonamenti-subtitle">
+    Scegli il tuo abbonamento e acquistalo comodamente online.
+    Il pagamento sarà gestito in modo sicuro tramite Nexi XPay.
+  </p>
+
+  <div class="abbonamenti-grid">
+
+    <!-- ABBONAMENTO 15 FULL -->
+    <article class="abbonamento-card">
+
+      <span class="abbonamento-badge">
+        FULL
+      </span>
+
+      <h3>
+        Abbonamento 15 Full
+      </h3>
+
+      <p class="abbonamento-descrizione">
+        Abbonamento Centro Sport Italia
+      </p>
+
+      <div class="abbonamento-prezzo">
+        <span class="euro">€</span>129
+      </div>
+
+      <button
+        type="button"
+        class="abbonamento-btn"
+        onclick="acquistaAbbonamento('full15', this)"
+      >
+        ACQUISTA ORA
+      </button>
+
+    </article>
+
+
+    <!-- ==================================================
+         PER AGGIUNGERE UN ALTRO ABBONAMENTO
+         DUPLICA IL BLOCCO <article> QUI SOPRA
+         E CAMBIA NOME, PREZZO E CODICE PRODOTTO
+         ================================================== -->
+
+  </div>
+
+  <p class="xpay-status" id="xpay-status">
+    🔒 Pagamenti online in fase di attivazione
+  </p>
+
+  <p class="xpay-sicurezza">
+    I dati della carta non vengono memorizzati sul sito
+    Centro Sport Italia.
+  </p>
+
+</section>
+
+<!-- FINE ABBONAMENTI ONLINE -->
 <section id="open-day" class="box" data-aos="fade-up" style="border: 2px solid #ffd700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);">
   <h2 style="color: #ffd700; text-align: center; text-transform: uppercase; font-size: 2em;">
     🎉 OPEN DAY 2026 - 40° ANNIVERSARIO 🎉
@@ -1816,5 +2042,145 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 </script>
+<!-- ======================================================
+     NEXI XPAY - GESTIONE ACQUISTO
+     ====================================================== -->
+
+<script>
+
+  /*
+   * Per ora FALSE:
+   * nessun pagamento reale viene avviato.
+   *
+   * Quando avremo collegato il backend XPay
+   * cambieremo questo valore in true.
+   */
+  const XPAY_ATTIVO = false;
+
+
+  /*
+   * Qui andrà l'indirizzo del nostro backend sicuro.
+   *
+   * IMPORTANTE:
+   * NON inserire qui la API KEY di Nexi.
+   */
+  const XPAY_BACKEND_URL = "";
+
+
+  async function acquistaAbbonamento(codiceProdotto, bottone) {
+
+    /*
+     * Finché Nexi non è pronto, il cliente
+     * vede solamente questo messaggio.
+     */
+    if (!XPAY_ATTIVO || !XPAY_BACKEND_URL) {
+
+      showToast(
+        "🔒 I pagamenti online saranno disponibili a breve."
+      );
+
+      return;
+    }
+
+
+    const testoOriginale = bottone.innerHTML;
+
+    bottone.disabled = true;
+    bottone.innerHTML = "Connessione sicura...";
+
+
+    try {
+
+      /*
+       * Mandiamo SOLO il codice prodotto.
+       *
+       * NON mandiamo il prezzo.
+       * Il prezzo reale sarà deciso dal server,
+       * così nessuno potrà modificarlo dal browser.
+       */
+      const risposta = await fetch(XPAY_BACKEND_URL, {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          productId: codiceProdotto
+        })
+
+      });
+
+
+      if (!risposta.ok) {
+        throw new Error("Errore nella creazione del pagamento");
+      }
+
+
+      const dati = await risposta.json();
+
+
+      /*
+       * Nexi restituisce hostedPage:
+       * è l'indirizzo della pagina di pagamento sicura.
+       */
+      if (!dati.hostedPage) {
+        throw new Error("URL pagamento non ricevuto");
+      }
+
+
+      /*
+       * Mandiamo il cliente sulla cassa Nexi.
+       */
+      window.location.href = dati.hostedPage;
+
+
+    } catch (errore) {
+
+      console.error(
+        "Errore XPay:",
+        errore
+      );
+
+      showToast(
+        "⚠️ Impossibile avviare il pagamento. Riprova tra poco."
+      );
+
+      bottone.disabled = false;
+      bottone.innerHTML = testoOriginale;
+
+    }
+
+  }
+
+
+  /*
+   * Cambia automaticamente la scritta
+   * quando XPay sarà stato attivato.
+   */
+  document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+      const stato = document.getElementById("xpay-status");
+
+      if (
+        XPAY_ATTIVO &&
+        XPAY_BACKEND_URL &&
+        stato
+      ) {
+
+        stato.innerHTML =
+          "🔒 Pagamento sicuro gestito da Nexi XPay";
+
+      }
+
+    }
+  );
+
+</script>
+
+<!-- FINE NEXI XPAY -->
 </body>
 </html>
