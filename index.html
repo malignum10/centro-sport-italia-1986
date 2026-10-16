@@ -970,6 +970,126 @@ nav {
     padding: 25px 18px;
   }
 }
+/* --- PULSANTE WHATSAPP FLUTTUANTE --- */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 85px; /* Sta un po' sopra al pulsante "Torna su" se presente */
+  right: 20px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0px 4px 15px rgba(37, 211, 102, 0.4);
+  z-index: 1000; /* Lo mantiene sempre in primo piano */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite; /* Leggera pulsazione continua */
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 20px rgba(37, 211, 102, 0.6);
+  background-color: #20b858;
+}
+
+.whatsapp-float svg {
+  width: 35px;
+  height: 35px;
+  fill: white;
+}
+
+/* Animazione di pulsazione per attirare l'attenzione discretamente */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* Tooltip (Testo che appare di fianco) solo su PC */
+.whatsapp-float::before {
+  content: "Prova Gratis!";
+  position: absolute;
+  right: 75px;
+  background-color: #fff;
+  color: #000;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(10px);
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  border: 1px solid #ddd;
+}
+
+/* Freccetta del Tooltip */
+.whatsapp-float::after {
+  content: "";
+  position: absolute;
+  right: 67px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(10px);
+}
+
+.whatsapp-float:hover::before,
+.whatsapp-float:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+/* Nasconde il tooltip sui telefoni perché si tocca con il dito, non c'è l'hover */
+@media (max-width: 768px) {
+  .whatsapp-float::before,
+  .whatsapp-float::after {
+    display: none;
+  }
+}
+/* --- EFFETTO ILLUMINAZIONE CONTATTI --- */
+.highlight-contact {
+  animation: goldPulse 2s ease-out;
+  border-radius: 8px; /* Per far sembrare l'alone più morbido */
+}
+
+@keyframes goldPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    background-color: transparent;
+  }
+  30% {
+    transform: scale(1.08); /* Ingrandimento */
+    box-shadow: 0 0 25px 10px rgba(255, 215, 0, 0.8); /* Alone dorato intenso */
+    background-color: rgba(255, 215, 0, 0.15); /* Sfondo leggermente dorato */
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    background-color: transparent;
+  }
+}
+
+/* Assicurati che i paragrafi dei contatti abbiano una transizione fluida per l'effetto */
+#contatti p {
+  transition: all 0.3s ease;
+  padding: 5px; /* Aggiunge un po' di spazio per far respirare l'effetto luminoso */
+  display: inline-block; /* Necessario per far funzionare bene il transform scale */
+}
   </style>
 </head>
 <body>
@@ -1002,7 +1122,7 @@ nav {
     <a href="#prenota">Prenota</a>
     <a href="#dove">Dove trovarci</a>
 	<a href="#recensioni">Recensioni</a> 
-    <a href="#contatti">Contatti</a>
+    <a href="#contatti" id="nav-link-contatti">Contatti</a>
   </div>
 </nav>
 
@@ -1027,9 +1147,16 @@ nav {
     style="border: 2px solid #ffd700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); width: 100%; border-radius: 12px; display: block; margin: 20px auto;"
   >
   
-  <div style="text-align: center; margin-top: 25px;">
-    <a href="#contatti" style="background: linear-gradient(145deg, #ffd700, #e0be00); color: #000; padding: 15px 35px; border-radius: 50px; font-weight: bold; text-decoration: none; font-size: 1.3em; display: inline-block; box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+<div style="text-align: center; margin-top: 25px; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+<a href="#contatti" id="btn-vai-contatti" style="background: linear-gradient(145deg, #ffd700, #e0be00); color: #000; padding: 15px 35px; border-radius: 50px; font-weight: bold; text-decoration: none; font-size: 1.3em; box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
       Vieni a trovarci o chiamaci subito!
+    </a>
+    
+    <a href="https://wa.me/393482660253?text=Ciao,%20vorrei%20avere%20informazioni%20sulla%20prova%20gratuita!" target="_blank" rel="noopener noreferrer" style="background: #25D366; color: #fff; padding: 12px 30px; border-radius: 50px; font-weight: bold; text-decoration: none; font-size: 1.1em; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 0 15px rgba(37, 211, 102, 0.5); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c-.003 1.396.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c.003-3.625 2.952-6.575 6.577-6.575a6.59 6.59 0 0 1 4.653 1.928 6.59 6.59 0 0 1 1.927 4.652c-.004 3.625-2.953 6.575-6.578 6.575zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.004-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+      </svg>
+      Contattaci per una Prova Gratis
     </a>
   </div>
 </section>
@@ -1181,8 +1308,8 @@ nav {
 </script>
 
   
-
 <section id="corsi" class="box" data-aos="zoom-in">
+ 
   <h2>I nostri corsi</h2>
   <p>Da noi, oltre alla sala attrezzi, puoi scegliere di seguire anche una vasta selezione di corsi tenuti da professionisti qualificati.</p>
   <img
@@ -1575,12 +1702,11 @@ nav {
   </section>
 <section id="contatti" class="box" data-aos="fade-left">
   <h2>Contatti</h2>
-  <p style="color: #ffd700; font-weight: bold;">📍 Via Norvegia 1, Marano di Napoli (NA) 80016</p>
-  <p>
+<p id="contatto-indirizzo" style="color: #ffd700; font-weight: bold;">📍 Via Norvegia 1, Marano di Napoli (NA) 80016</p>
+  <p id="contatto-telefono">
     📞 <a href="tel:0819768302" style="color: #ffd700; font-weight: bold; text-decoration: underline;">
   081 976 8302
 </a>
-
   </p>
   
   
@@ -2130,7 +2256,49 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 
 </script>
+<!-- PULSANTE WHATSAPP FLUTTUANTE -->
+<a href="https://wa.me/393482660253?text=Ciao,%20vorrei%20avere%20informazioni%20sulla%20prova%20gratuita!" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c-.003 1.396.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c.003-3.625 2.952-6.575 6.577-6.575a6.59 6.59 0 0 1 4.653 1.928 6.59 6.59 0 0 1 1.927 4.652c-.004 3.625-2.953 6.575-6.578 6.575zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.004-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+  </svg>
+</a>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Selezioniamo entrambi i pulsanti
+    const btnVaiContatti = document.getElementById('btn-vai-contatti');
+    const navLinkContatti = document.getElementById('nav-link-contatti');
+    
+    // Creiamo una funzione unica che fa partire l'animazione
+    const triggerHighlight = () => {
+      setTimeout(() => {
+        const indirizzo = document.getElementById('contatto-indirizzo');
+        const telefono = document.getElementById('contatto-telefono');
+        
+        if (indirizzo && telefono) {
+          // Rimuove la classe nel caso fosse già presente
+          indirizzo.classList.remove('highlight-contact');
+          telefono.classList.remove('highlight-contact');
+          
+          // Forza un reflow per far riavviare l'animazione
+          void indirizzo.offsetWidth; 
+          void telefono.offsetWidth;
+          
+          // Aggiunge la classe che lancia il bagliore dorato
+          indirizzo.classList.add('highlight-contact');
+          telefono.classList.add('highlight-contact');
+        }
+      }, 100); 
+    };
 
-<!-- FINE NEXI XPAY -->
+    // Colleghiamo la funzione a entrambi i pulsanti (se esistono nella pagina)
+    if (btnVaiContatti) {
+      btnVaiContatti.addEventListener('click', triggerHighlight);
+    }
+    
+    if (navLinkContatti) {
+      navLinkContatti.addEventListener('click', triggerHighlight);
+    }
+  });
+</script>
 </body>
 </html>
